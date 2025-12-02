@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Veículos</title>
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+<h1>Veículos Cadastrados</h1>
+
+<div style="margin-bottom: 20px; text-align: left;">
+    <a th:href="@{/loja}">
+        <button style="
+            background: #333;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;">
+            ⬅ Voltar para a Loja
+        </button>
+    </a>
+</div>
+
+<a href="/admin/veiculos/novo">Adicionar Novo Veículo</a>
+
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Tipo</th>
+        <th>Marca</th>
+        <th>Modelo</th>
+        <th>Ano</th>
+        <th>Preço</th>
+        <th>Ações</th>
+    </tr>
+
+    <tr th:each="v : ${veiculos}">
+        <td th:text="${v.id}"></td>
+        <td th:text="${v.tipo}"></td>
+        <td th:text="${v.marca}"></td>
+        <td th:text="${v.modelo}"></td>
+        <td th:text="${v.ano}"></td>
+        <td>R$ <span th:text="${v.preco}"></span></td>
+
+        <td>
+            <a th:href="@{/admin/veiculos/editar/{id}(id=${v.id})}">Editar</a>
+            <a th:href="@{/admin/veiculos/deletar/{id}(id=${v.id})}">Deletar</a>
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>

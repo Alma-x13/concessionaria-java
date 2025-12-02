@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <link rel="stylesheet" th:href="@{/css/decoracao.css}">
+    <title>Mercedes Actros 2653S</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+    <a th:href="@{/loja}" class="btn-voltar">⟵ Voltar para a Loja</a>
+
+<div id="banner">
+    <h1>Bem Vindo ao Alma-X Truckão Motors</h1>
+</div>
+
+<div class="pai1">
+<div id="fundo1">
+
+
+    <div id="produtos1">
+        <div id="itens1">
+            <div>
+                <img th:src="@{/Fotos/Caminhoes/Mercedes/Mercedes actros 2653S.png}" alt="Mercedes" id="carro1" class="imagem-grande">
+            </div>
+        </div>
+
+        <div class="imagem">
+            <ol>
+                <li><img th:src="@{/Fotos/Caminhoes/Mercedes/Mercedes actros 2653S traseira.png}" class="pequeno troca"></li>
+                <li><img th:src="@{/Fotos/Caminhoes/Mercedes/Mercedes actros 2653S interior.png}" class="pequeno troca"></li>
+                <li><img th:src="@{/Fotos/Caminhoes/Mercedes/Mercedes interior 2.png}" class="pequeno troca"></li>
+            </ol>
+        </div>
+    </div>
+    
+
+    <h1>Mercedes Actros 2653S</h1>
+    <p>
+        Actros 2653S 2023, 6x4, painel digital, sensores de faixa, Start/Stop,
+        geladeira, rodas de alumínio, bomba hidráulica e muito mais.
+    </p>
+
+    <div class="carrinho">
+        <form th:action="@{/adicionarCarrinho}" method="post">
+            <input type="hidden" name="nome" value="Mercedes Actros 2653S">
+            <input type="hidden" name="imagem" value="Fotos/Caminhoes/Mercedes/Mercedes actros 2653S.png">
+            <input type="hidden" name="preco" value="620000">
+            <input type="hidden" name="id" value="8">
+            <button class="botao">Colocar no Carrinho</button>
+        </form>
+    </div>
+
+</div>
+</div>
+
+<script>
+document.querySelectorAll(".troca").forEach(img => {
+    img.addEventListener("click", () => {
+        const grande = document.querySelector(".imagem-grande");
+        const temp = grande.src;
+        grande.src = img.src;
+        img.src = temp;
+    });
+});
+</script>
+
+</body>
+</html>

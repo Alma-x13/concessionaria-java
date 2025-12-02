@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Confirmação</title>
+    <style>
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #121212;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .card {
+            background-color: #1f1f1f;
+            padding: 40px 50px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            max-width: 450px;
+        }
+
+        .icon-check {
+            font-size: 60px;
+            color: #4caf50;
+            margin-bottom: 20px;
+        }
+
+        .titulo {
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        p {
+            font-size: 16px;
+            color: #ccc;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            font-size: 16px;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .btn-branco {
+            background-color: #fff;
+            color: #121212;
+        }
+
+        .btn-branco:hover {
+            background-color: #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <!-- Ícone de confirmação -->
+    <div class="icon-check">✔️</div>
+
+    <h1 class="titulo">Sucesso!</h1>
+    <p th:text="${mensagem}">Sua ação foi realizada com sucesso.</p>
+
+    <a th:href="@{/loja}" class="btn btn-branco">Voltar</a>
+</div>
+
+</body>
+</html>

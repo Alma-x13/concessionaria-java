@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Informações • Alma-X Truckão Motors</title>
+    <link rel="stylesheet" th:href="@{/css/info.css}">
+</head>
+
+<body>
+
+<header class="topo">
+    <h1 class="titulo">Informações do Site</h1>
+</header>
+
+<section class="container">
+
+    <div class="card">
+        <h2>Sobre Nós</h2>
+        <p>
+            A <strong>Alma-X Truckão Motors</strong> é uma concessionária fictícia criada para estudos,
+            oferecendo um catálogo completo de carros, motos e caminhões.
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>Missão</h2>
+        <p>
+            Proporcionar a melhor experiência possível ao usuário, 
+            com um ambiente moderno, prático e visualmente agradável.
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>Tecnologias Utilizadas</h2>
+        <ul>
+            <li>Java • Spring Boot</li>
+            <li>Thymeleaf</li>
+            <li>MySQL</li>
+            <li>HTML5, CSS3 e JavaScript</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>Funcionalidades</h2>
+        <ul>
+            <li>📌Sistema de Login</li>
+            <li>📌Painel Admin</li>
+            <li>📌Cadastro de Veículos com foto</li>
+            <li>📌Listagem por categoria</li>
+            <li>📌Carrinho de compras</li>
+            <li>📌Perfil de usuário editável</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>Contato</h2>
+        <p>Email: suporte@almax.com</p>
+        <p>Telefone: (11) 99999-9999</p>
+    </div>
+
+</section>
+
+<!-- BOTÃO VOLTAR À LOJA  -->
+<div class="voltar-container">
+    <a th:href="@{/loja}" class="voltar-btn">⟵ Voltar à Loja</a>
+</div>
+
+<footer class="rodape">
+    <p>© 2025 Alma-X Truckão Motors — Todos os direitos reservados.</p>
+</footer>
+
+</body>
+</html>

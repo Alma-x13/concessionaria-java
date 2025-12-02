@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:thymeleaf="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Harley Davidson</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/decoracao.css}">
+</head>
+<body>
+
+<!-- Botão voltar -->
+<a th:href="@{/loja}" class="btn-voltar">⟵ Voltar para a Loja</a>
+
+<!-- Banner -->
+<div id="banner"> 
+    <h1>Alma-X Truckão Motors</h1>
+</div>
+
+<div class="container-veiculo">
+
+    <div class="card-veiculo">
+
+        <!-- Foto principal -->
+    <section class="galeria">
+        <div class="imagem-principal">
+          <img class="main-image"
+               th:src="@{/Fotos/Carros/civic/CIVIC FRENTE.png}" alt="LEXUS ES 300h Frente">
+        </div>
+
+        <div class="miniaturas">
+            <img class="thumbnail" th:src="@{/Fotos/Carros/civic/CIVIC INTERIOR.png}" alt="Interior Lexus">
+            <img class="thumbnail" th:src="@{/Fotos/Carros/civic/CIVIC TRASEIRA.png}" alt="Traseira Lexus">
+        </div>
+      </section>
+
+
+        <!-- Informações -->
+        <div class="info">
+            <h1>Harley Davidson</h1>
+
+            <div class="detalhes">
+                <p><strong>Preço:</strong>35.000</p>
+                <p><strong>Ano:</strong> 2022</p>
+                <p><strong>Motor:</strong> 1.8</p>
+                <p><strong>Quilometragem:</strong> 40.000 km</p>
+                <p><strong>Estado:</strong> Ótimo estado de conservação</p>
+                <p><strong>Descrição:</strong> Veículo de extrema procedência, acabamento premium e conforto absoluto.</p>
+            </div>
+
+            <form th:action="@{/adicionarCarrinho}" method="post" class="form-carrinho">
+                <input type="hidden" name="nome" value="LEXUS ES 300h">
+                <input type="hidden" name="imagem" value="@{/Fotos/Carros/civic/CIVIC FRENTE.png}" alt="LEXUS ES 300h Frente">
+                <input type="hidden" name="preco" value="125000">
+                <input type="hidden" name="id" value="3">
+
+                <button type="submit" class="botao-carrinho">Adicionar ao Carrinho 🛒</button>
+            </form>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- JS externo -->
+<script th:src="@{/js/decoracao.js}"></script>
+
+</body>
+</html>

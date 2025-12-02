@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Painel do Administrador</title>
+    <link rel="stylesheet" href="/css/painel-admin.css">
+</head>
+<body>
+
+<a th:href="@{/loja}" class="btn-voltar">⟵ Voltar para a Loja</a>
+
+<h1 class="titulo">Painel do Administrador</h1>
+
+<!-- Criar novo admin -->
+<div class="card">
+    <h2>Criar Novo Administrador</h2>
+
+    <form th:action="@{/admin/cadastrar-adm}" method="post" class="form">
+        <label>Nome:</label>
+        <input type="text" name="nome" required>
+
+        <label>Email:</label>
+        <input type="email" name="email" required>
+
+        <label>Senha:</label>
+        <input type="password" name="senha" required>
+
+        <button type="submit" class="btn btn-verde">Criar Admin</button>
+    </form>
+</div>
+
+<!-- Lista de administradores -->
+<div class="card">
+    <h2>Administradores Atuais</h2>
+
+    <table class="tabela">
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Ações</th>
+        </tr>
+
+        <tr th:each="admin : ${admins}">
+            <td th:text="${admin.id}"></td>
+            <td th:text="${admin.nome}"></td>
+            <td th:text="${admin.email}"></td>
+
+            <td class="acoes">
+                <a th:href="@{/admin/editarAdmin/{id}(id=${admin.id})}" class="btn btn-azul">Editar</a>
+
+                <form action="/admin/deletar" method="post" style="display:inline;">
+                    <input type="hidden" name="id" th:value="${admin.id}">
+                    <button type="submit" class="btn btn-vermelho">Deletar</button>
+                </form>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<!-- Lista de usuários -->
+<div class="card">
+    <h2>Usuários Comuns</h2>
+
+    <table class="tabela">
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Ação</th>
+        </tr>
+
+        <tr th:each="u : ${usuarios}">
+            <td th:text="${u.id}"></td>
+            <td th:text="${u.nome}"></td>
+            <td th:text="${u.email}"></td>
+
+            <td class="acoes">
+                <a th:href="@{/admin/editarUsuario/{id}(id=${u.id})}" class="btn btn-azul">Editar</a>
+
+                <form action="/admin/promover" method="post" style="display:inline;">
+                    <input type="hidden" name="id" th:value="${u.id}">
+                    <button type="submit" class="btn btn-roxo">Promover</button>
+                </form>
+            </td>
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>

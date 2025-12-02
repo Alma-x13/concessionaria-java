@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Carrinho</title>
+    <link rel="stylesheet" href="/css/carrinho.css">
+</head>
+<body>
+
+    <!-- BANNER -->
+    <div id="banner">
+        <img th:src="@{/Fotos/banner.png}" alt="Caminhão" id="caminhaoazul">
+        <h1>Alma-X Truckão Motors</h1>
+    </div>
+
+
+    <div class="pai">
+        <div id="fundo">
+
+            <p class="titulo">Itens no Carrinho</p>
+
+            
+            <div th:if="${itens.isEmpty()}">
+                <h2 style="text-align:center;">Seu carrinho está vazio 😳</h2>
+            </div>
+
+           
+            <div th:each="item : ${itens}" class="compras">
+
+                <img th:src="@{${item.imagem}}">
+
+                <h1 th:text="${item.nome}"></h1>
+
+                <p>Preço: R$ <span th:text="${item.preco}"></span></p>
+
+                <a class="remover botao-limpar" 
+                   th:href="@{'/remover?id=' + ${item.id}}"
+                   style="font-size:16px; padding:8px 15px; border-radius:10px;">
+                    Remover
+                </a>
+
+            </div>
+
+          
+            <h2 style="margin-left:20px;">Total: R$ <span th:text="${total}"></span></h2>
+
+         
+           <div class="botoes-carrinho">
+
+          <a href="/limparCarrinho">
+              <button class="botao-limpar">🗑 Limpar Carrinho</button>
+          </a>
+
+          <a href="/loja">
+              <button class="botao-voltar">🛒 Voltar à Loja</button>
+          </a>
+
+          <form th:action="@{/finalizarCompra}" method="post" style="display:inline;">
+    <button type="submit" class="botao-finalizar">
+        💳 Finalizar Compra
+    </button>
+        </form>
+
+      </div>
+
+
+
+
+        </div>
+    </div>
+
+</body>
+</html>

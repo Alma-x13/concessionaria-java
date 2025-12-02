@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Pedidos dos Usuários</title>
+</head>
+
+<body>
+<h1>Pedidos Realizados</h1>
+
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Usuário</th>
+        <th>Total</th>
+        <th>Data</th>
+        <th>Itens</th>
+    </tr>
+
+    <tr th:each="p : ${pedidos}">
+        <td th:text="${p.id}"></td>
+        <td th:text="${p.usuario.nome}"></td>
+        <td th:text="${p.total}"></td>
+        <td th:text="${p.dataHora}"></td>
+
+        <td>
+            <ul>
+                <li th:each="i : ${p.itens}" th:text="${i.nome}"></li>
+            </ul>
+        </td>
+    </tr>
+
+</table>
+
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Pagamento</title>
+
+    <style>
+        body {
+            background: linear-gradient(to right, #2c2c2c, #4b4b4b);
+            color: white;
+            font-family: Arial, sans-serif;
+            padding: 40px;
+        }
+
+        h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .caixa {
+            background: #fff;
+            color: black;
+            padding: 25px;
+            border-radius: 20px;
+            width: 50%;
+            margin-top: 20px;
+        }
+
+        .item {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .item:last-child {
+            border-bottom: none;
+        }
+
+        button {
+            background: #c40000;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        button:hover {
+            background: #a00000;
+        }
+
+        .voltar {
+            background: #333;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Pagamento</h1>
+<p>Confirme sua compra abaixo:</p>
+
+<div class="caixa">
+
+    <h2>Itens Selecionados</h2>
+
+    <div th:if="${itens.size() == 0}">
+        <p>Nenhum item no carrinho 😥</p>
+    </div>
+
+    <div th:each="i : ${itens}" class="item">
+        <strong th:text="${i.nome}"></strong><br>
+        <small th:text="'Preço: R$ ' + ${i.preco}"></small>
+    </div>
+
+    <h3 style="margin-top:20px;">
+        Total: R$ <span th:text="${#numbers.formatDecimal(total, 1, 'COMMA', 2, 'POINT')}"></span>
+    </h3>
+
+    <!-- FORMULÁRIO FINAL CORRETO -->
+    <form method="post" th:action="@{/pagar}">
+
+        <input type="hidden" name="total" th:value="${total}">
+
+        <label style="font-size: 20px; font-weight: bold;">Forma de Pagamento:</label>
+        <br><br>
+
+        <select name="formaPagamento" required
+                style="font-size:18px; padding:10px; border-radius:8px;">
+            <option value="">Selecione...</option>
+            <option value="Cartão de Crédito">Cartão de Crédito</option>
+            <option value="Pix">Pix</option>
+            <option value="Boleto">Boleto</option>
+            <option value="Dinheiro">Dinheiro</option>
+        </select>
+
+        <br><br>
+
+        <button type="submit">Pagar Agora</button>
+
+    </form>
+
+    <a th:href="@{/carrinho}">
+        <button class="voltar">Voltar</button>
+    </a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Administrador</title>
+    <link rel="stylesheet" href="/css/painel-admin.css">
+</head>
+
+<body>
+
+<a th:href="@{/admin/painel}" class="btn-voltar">⟵ Voltar</a>
+
+<div class="card">
+    <h1 class="titulo">Editar Administrador</h1>
+
+    <form th:action="@{/admin/salvarEdicaoAdmin}" method="post" class="form">
+        <input type="hidden" name="id" th:value="${admin.id}">
+
+        <label>Nome:</label>
+        <input type="text" name="nome" th:value="${admin.nome}">
+
+        <label>Email:</label>
+        <input type="email" name="email" th:value="${admin.email}">
+
+        <button class="btn btn-azul">Salvar</button>
+    </form>
+</div>
+
+</body>
+</html>

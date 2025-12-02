@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" th:href="@{/css/cadastro.css}">
+  <title>Cadastro</title>
+</head>
+<body>
+
+
+  <div id="banner">
+    <img th:src="@{/Fotos/banner.png}" alt="caminhão" id="caminhaoazul">
+    <h1>Bem-vindo à Alma-X Truckão Motors</h1>
+  </div>
+
+ 
+  <div id="pai">
+    <main class="card" aria-labelledby="title">
+      <h1 id="title">Cadastro</h1>
+
+      <form th:action="@{/register}" method="post">
+        <fieldset>
+          <label for="nome">Nome de Usuário</label>
+          <input id="nome" name="nome" type="text" placeholder="Digite seu nome de usuário" required />
+        </fieldset>
+
+        <fieldset>
+          <label for="email">E-mail</label>
+          <input id="email" name="email" type="email" placeholder="seu@exemplo.com" required />
+        </fieldset>
+
+        <fieldset>
+          <label for="telefone">Telefone</label>
+          <input id="telefone" name="telefone" type="text" placeholder="(11) 99999-9999" required />
+        </fieldset>
+
+        <fieldset>
+          <label for="senha">Senha</label>
+          <input id="senha" name="senha" type="password" placeholder="Crie uma senha" required />
+        </fieldset>
+
+        <div class="btn-container">
+          <button type="submit">Cadastrar</button>
+        </div>
+      </form>
+
+
+      <div th:if="${comSucesso}" 
+           style="background-color:#d4edda; color:#155724; border:1px solid #c3e6cb;
+                  padding:10px; border-radius:5px; margin-top:15px;">
+        <p th:text="${comSucesso}"></p>
+      </div>
+
+      <div th:if="${erro}" 
+           style="background-color:#f8d7da; color:#721c24; border:1px solid #f5c6cb;
+                  padding:10px; border-radius:5px; margin-top:15px;">
+        <p th:text="${erro}"></p>
+      </div>
+
+      <p style="margin-top:10px;">Já tem uma conta? <a th:href="@{/longi}">Fazer login</a></p>
+    </main>
+  </div>
+
+</body>
+</html>

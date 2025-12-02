@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <title>Scania R450 A6x2</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" th:href="@{/css/decoracao.css}">
+</head>
+<body>
+
+
+  <a th:href="@{/loja}" class="btn-voltar">⟵ Voltar para a Loja</a>
+
+
+  <header id="banner">
+    <img th:src="@{/Fotos/banner.png}" alt="banner" id="banner-img">
+    <h1>Alma-X Truckão Motors</h1>
+  </header>
+
+  
+  <main class="container-veiculo">
+
+    <article class="card-veiculo">
+
+      
+      <section class="galeria">
+        <div class="imagem-principal">
+          <img class="main-image"
+               th:src="@{/Fotos/Caminhoes/Scania/SCANIA FRENTE.png}"
+               alt="Scania Frente">
+        </div>
+
+        <div class="miniaturas">
+          <img class="thumbnail" th:src="@{/Fotos/Caminhoes/Scania/SCANIA INTERIOR.png}" alt="Interior">
+          <img class="thumbnail" th:src="@{/Fotos/Caminhoes/Scania/SCANIA LADO.png}" alt="Lado">
+          <img class="thumbnail" th:src="@{/Fotos/Caminhoes/Scania/SCANIA TRASEIRA.png}" alt="Traseira">
+        </div>
+      </section>
+
+      <!-- coluna direita: informação e botão -->
+      <aside class="info">
+        <h2>Scania R450 A6x2 2022/2023</h2>
+
+        <ul class="specs">
+          <li><strong>Ano:</strong> 2022/2023</li>
+          <li><strong>Opções:</strong> Saia lateral, defletor, ADAS</li>
+          <li><strong>Pneus:</strong> Novos</li>
+          <li><strong>Estado:</strong> Revisado</li>
+        </ul>
+
+        <p class="descricao">Scania zerada com opcionais como: Saia Lateral, Defletor, Pneus novos e com sistema ADAS.</p>
+
+        <form th:action="@{/adicionarCarrinho}" method="post" class="form-carrinho">
+          <input type="hidden" name="nome" value="Scania R450">
+          <input type="hidden" name="imagem" value="/Fotos/Caminhoes/Scania/SCANIA FRENTE.png">
+          <input type="hidden" name="preco" value="390000">
+          <input type="hidden" name="id" value="9">
+
+          <button type="submit" class="botao-carrinho">Adicionar ao Carrinho 🛒</button>
+        </form>
+      </aside>
+
+    </article>
+
+  </main>
+
+  <script th:src="@{/js/decoracao.js}"></script>
+</body>
+</html>

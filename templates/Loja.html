@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="pt-BR"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Alma-X Truckão Motors</title>
+    <link rel="stylesheet" th:href="@{/css/loja.css}">
+</head>
+
+<body>
+
+<!-- BANNER -->
+<header class="banner">
+    <img th:src="@{/Fotos/banner.png}" class="banner-img">
+    <h1 class="banner-title">Alma-X Truckão Motors</h1>
+</header>
+
+<!-- MENU -->
+<nav class="menu">
+
+    <a th:href="@{/perfil}" class="menu-btn">
+        <img th:src="@{/Fotos/icone/perfil.png}">
+        Perfil
+    </a>
+
+    <div sec:authorize="hasRole('ADMIN')" class="menu-admin">
+        <a th:href="@{/admin/painel}" class="menu-btn admin">
+            <img th:src="@{/Fotos/icone/prancheta.png}">
+            Painel Admin
+        </a>
+
+        <a th:href="@{/admin/veiculos/lista}" class="menu-btn admin2">
+            <img th:src="@{/Fotos/icone/prancheta.png}">
+            Veículos
+        </a>
+    </div>
+
+    <a th:href="@{/carrinho}" class="menu-btn">
+        <img th:src="@{/Fotos/icone/carrinho-de-compras.png}">
+        Carrinho
+    </a>
+
+    <a th:href="@{/informacoes}" class="menu-btn">
+    <img th:src="@{/Fotos/icone/prancheta.png}">
+    Informações
+    </a>
+
+</nav>
+
+
+
+<!-- ÁREA PRINCIPAL -->
+<div class="container">
+
+<!-- CARROS -->
+<section class="categoria">
+    <h2 class="titulo">Carros</h2>
+
+    <div sec:authorize="hasRole('ADMIN')" class="add-area">
+        <a href="/admin/veiculos/novo?categoria=CARRO" class="add-btn">+ Adicionar Carro</a>
+    </div>
+
+    <div class="grid">
+
+        <!-- CARROS DO BANCO -->
+        <div class="card" th:each="v : ${veiculos}" th:if="${v.categoria == 'CARRO'}">
+
+            <a th:href="@{/veiculo/{id}(id=${v.id})}">
+                <img th:src="${v.imagem}" class="card-img">
+            </a>
+
+            <h3 class="card-title" th:text="${v.nome}"></h3>
+
+            <a class="delete-btn" 
+            th:href="@{'/admin/veiculos/deletar/' + ${v.id}}"
+            sec:authorize="hasRole('ADMIN')">Remover</a>
+
+            <form th:action="@{/adicionarCarrinho}" method="post">
+                <input type="hidden" name="id" th:value="${v.id}">
+                <button class="card-btn">Adicionar ao Carrinho</button>
+            </form>
+
+
+
+        </div>
+
+        <!-- CARROS FIXOS -->
+        <div class="card">
+            <a th:href="@{/civic}">
+                <img th:src="@{/Fotos/Carros/civic/CIVIC FRENTE.png}" class="card-img">
+            </a>
+            <h3>Honda Civic 2013</h3>
+            <form th:action="@{/adicionarCarrinho}" method="post">
+                <input type="hidden" name="id" value="1">
+                <button class="card-btn">Adicionar ao Carrinho</button>
+            </form>
+        </div>
+
+        <div class="card">
+            <a th:href="@{/fusion}">
+                <img th:src="@{/Fotos/Carros/Fusion/FUSION_FRENTE.png}" class="card-img">
+            </a>
+            <h3>Ford Fusion Titanium 2017</h3>
+            <form th:action="@{/adicionarCarrinho}" method="post">
+                <input type="hidden" name="id" value="2">
+                <button class="card-btn">Adicionar ao Carrinho</button>
+            </form>
+        </div>
+
+        <div class="card">
+            <a th:href="@{/lexus}">
+                <img th:src="@{/Fotos/Carros/LEXUS/lexus-es-300h-2.5-16v-hibrido-cvt-wmimagem15174688716.png}" class="card-img">
+            </a>
+            <h3>Lexus ES 300H</h3>
+            <form th:action="@{/adicionarCarrinho}" method="post">
+                <input type="hidden" name="id" value="3">
+                <button class="card-btn">Adicionar ao Carrinho</button>
+            </form>
+        </div>
+
+    </div>
+</section>
+
+
+
+
+<!-- MOTOS -->
+<section class="categoria">
+
+    <h2 class="titulo">Motos</h2>
+
+    <div sec:authorize="hasRole('ADMIN')" class="add-area">
+        <a href="/admin/veiculos/novo?categoria=MOTO" class="add-btn">+ Adicionar Moto</a>
+    </div>
+
+    <div class="grid">
+
+        <!-- MOTOS DB -->
+        <div class="card" th:each="v : ${veiculos}" th:if="${v.categoria == 'MOTO'}">
+            <img th:src="${v.imagem}" class="card-img">
+            <h3 th:text="${v.nome}"></h3>
+
+            <form th:action="@{/adicionarCarrinho}" method="post">
+                <input type="hidden" name="id" th:value="${v.id}">
+                <button class="card-btn">Adicionar ao Carrinho</button>
+            </form>
+
+            <a class="delete-btn" 
+            th:href="@{'/admin/veiculos/deletar/' + ${v.id}}"
+            sec:authorize="hasRole('ADMIN')">Remover</a>
+
+        </div>
+
+        <!-- MOTOS FIXAS -->
+        <div class="card">
+            <a th:href="@{/harley}">
+            <img th:src="@{/Fotos/Motos/HARLEY/harley frente.png}" class="card-img"></a>
+            <h3>Harley Davidson 2022</h3>
+            <form th:action="@{/adicionarCarrinho}" method="post">
+                <button class="card-btn">Adicionar ao Carrinho</button>
+                <input type="hidden" name="id" value="4">
+            </form>
+        </div>
+
+        <div class="card">
+            <a th:href="@{/kawasaki}">
+            <img th:src="@{/Fotos/Motos/Kawasaki/kasawj.jpg}" class="card-img"></a>
+            <h3>Kawasaki Ninja 500</h3>
+            <form th:action="@{/adicionarCarrinho}" method="post">
+                <input type="hidden" name="id" value="5">
+                <button class="card-btn">Adicionar ao Carrinho</button>
+            </form>
+        </div>
+
+        <div class="card">
+            <a th:href="@{/vespa}">
+            <img th:src="@{/Fotos/Motos/VESPA PX200/VESPA PX200.png}" class="card-img"></a>
+            <h3>Vespa PX200</h3>
+            <form th:action="@{/adicionarCarrinho}" method="post">
+                <input type="hidden" name="id" value="6">
+                <button class="card-btn">Adicionar ao Carrinho</button>
+            </form>
+        </div>
+
+    </div>
+</section>
+
+
+
+
+<!-- CAMINHÕES -->
+<section class="categoria">
+
+    <h2 class="titulo">Caminhões</h2>
+
+    <div sec:authorize="hasRole('ADMIN')" class="add-area">
+        <a href="/admin/veiculos/novo?categoria=CAMINHAO" class="add-btn">+ Adicionar Caminhão</a>
+    </div>
+
+    <div class="grid">
+
+        <!-- CAMINHÕES DB -->
+        <div class="card" th:each="v : ${veiculos}" th:if="${v.categoria == 'CAMINHAO'}">
+            <img th:src="${v.imagem}" class="card-img">
+            <h3 th:text="${v.nome}"></h3>
+
+            
+
+            <form th:action="@{/adicionarCarrinho}" method="post">
+                <input type="hidden" name="id" th:value="${v.id}">
+                <button class="card-btn">Adicionar ao Carrinho</button>
+            </form>
+
+            <a class="delete-btn" 
+            th:href="@{'/admin/veiculos/deletar/' + ${v.id}}"
+            sec:authorize="hasRole('ADMIN')">Remover</a>
+            
+        </div>
+
+        
+
+        <!-- FIXOS -->
+        <div class="card">
+            <a th:href="@{/daf}">
+            <img th:src="@{/Fotos/Caminhoes/DAF XF 460 2020/DAF_XF.png}" class="card-img"></a>
+            <h3>DAF XF 460 2020</h3>
+            <form th:action="@{/adicionarCarrinho}" method="post">
+                <input type="hidden" name="id" value="7">
+                <button class="card-btn">Adicionar ao Carrinho</button>
+            </form>
+        </div>
+
+        <div class="card">
+            <a th:href="@{/mercedes}">
+            <img th:src="@{/Fotos/Caminhoes/Mercedes/Mercedes actros 2653S.png}" class="card-img"></a>
+            <h3>Mercedes Actros</h3>
+            <form th:action="@{/adicionarCarrinho}" method="post">
+                <input type="hidden" name="id" value="8">
+                <button class="card-btn">Adicionar ao Carrinho</button>
+            </form>
+        </div>
+
+        <div class="card">
+            <a th:href="@{/scania}">
+            <img th:src="@{/Fotos/Caminhoes/Scania/SCANIA FRENTE.png}" class="card-img"></a>
+            <h3>Scania R450</h3>
+            <form th:action="@{/adicionarCarrinho}" method="post">
+                <input type="hidden" name="id" value="9">
+                <button class="card-btn">Adicionar ao Carrinho</button>
+            </form>
+        </div>
+
+    </div>
+</section>
+
+</div>
+
+
+
+
+<!-- RODAPÉ -->
+<footer class="rodape">
+    <div class="rodape-container">
+
+        <div>
+            <h2>Alma-X Truckão Motors</h2>
+            <p>Sua concessionária completa de veículos.</p>
+        </div>
+
+        <div>
+            <h3>Links</h3>
+            <ul>
+                <li><a>🏠Início</a></li>
+                <li><a>🚗Carros</a></li>
+                <li><a>🏍️Motos</a></li>
+                <li><a>🚚Caminhões</a></li>
+            </ul>
+        </div>
+
+    </div>
+</footer>
+
+</body>
+</html>

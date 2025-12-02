@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Veículo</title>
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+
+<body>
+
+<h1>Cadastro de Veículo</h1>
+
+<form th:action="@{/admin/veiculos/salvar}" 
+      th:object="${veiculo}"
+      method="post"
+      enctype="multipart/form-data">
+
+    <!-- ID escondido para edição -->
+    <input type="hidden" th:field="*{id}">
+
+    <label>Nome do Veículo:</label>
+    <input type="text" th:field="*{nome}" required>
+
+    <label>Marca:</label>
+    <input type="text" th:field="*{marca}">
+
+    <label>Tipo:</label>
+    <input type="text" th:field="*{Tipo}">
+
+    <label>Modelo:</label>
+    <input type="text" th:field="*{modelo}">
+
+    <label>Ano:</label>
+    <input type="number" th:field="*{ano}" min="1900" max="2100">
+
+    <label>Preço:</label>
+    <input type="number" th:field="*{preco}" min="0">
+
+    <!-- SELECT CORRIGIDO -->
+    <label>Categoria:</label>
+    <select th:field="*{categoria}" required>
+        <option value="" disabled>Selecione...</option>
+        <option value="CARRO" th:selected="${veiculo.categoria == 'CARRO'}">Carro</option>
+        <option value="MOTO" th:selected="${veiculo.categoria == 'MOTO'}">Moto</option>
+        <option value="CAMINHAO" th:selected="${veiculo.categoria == 'CAMINHAO'}">Caminhão</option>
+    </select>
+
+    <label>Imagem (URL):</label>
+    <label>Enviar Imagem:</label>
+    <input type="file" name="imagemFile" accept="image/*">
+
+    <button type="submit">Salvar Veículo</button>
+
+</form>
+
+<!-- ========= Botões ========== -->
+<div style="margin-top: 25px; display: flex; gap: 20px;">
+
+    <a href="/admin/veiculos/lista" class="btn-voltar">
+        ⬅ Voltar à Lista de Veículos
+    </a>
+
+    <a href="/loja" class="btn-loja">
+        🏬 Voltar para a Loja
+    </a>
+
+</div>
+
+</body>
+</html>

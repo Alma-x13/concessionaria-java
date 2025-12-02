@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Piaggio Vespa PX 200</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/decoracao.css}">
+</head>
+<body>
+
+<a th:href="@{/loja}" class="btn-voltar">⟵ Voltar para a Loja</a>
+
+<div id="banner">
+    <h1>Alma-X Truckão Motors</h1>
+</div>
+
+<div class="container-veiculo">
+
+    <div class="card-veiculo">
+
+        <section class="galeria">
+        <div class="imagem-principal">
+            <img class="main-image"
+                 th:src="@{/Fotos/Motos/VESPA PX200/VESPA PX200.png}"
+                 alt="Vespa PX200">
+        </div>
+
+        
+        <div class="miniaturas">
+            <img class="thumbnail"
+                 th:src="@{/Fotos/Motos/VESPA PX200/VESPA TRASEIRA.png}">
+            <img class="thumbnail"
+                 th:src="@{/Fotos/Motos/VESPA PX200/VESPAPX200 FRENTE.png}">
+        </div>
+        </section>
+
+        <!-- Informações -->
+        <div class="info">
+            <h1>Piaggio Vespa PX 200 (1986)</h1>
+
+            <div class="detalhes">
+                <p><strong>Ano:</strong> 1986</p>
+                <p><strong>KM:</strong> Baixa quilometragem</p>
+                <p><strong>Estado:</strong> Revisada • Acessórios importados</p>
+                <p><strong>Descrição:</strong> Moto em ótimo estado, funcionando perfeitamente.</p>
+            </div>
+
+            <form th:action="@{/adicionarCarrinho}" method="post" class="form-carrinho">
+                <input type="hidden" name="nome" value="Vespa PX 200">
+                <input type="hidden" name="imagem" value="/Fotos/Motos/VESPA PX200/VESPA PX200.png">
+                <input type="hidden" name="preco" value="15000">
+                <input type="hidden" name="id" value="6">
+                <button type="submit" class="botao-carrinho">Adicionar ao Carrinho 🛒</button>
+            </form>
+        </div>
+
+    </div>
+
+</div>
+
+<script th:src="@{/js/decoracao.js}"></script>
+
+</body>
+</html>

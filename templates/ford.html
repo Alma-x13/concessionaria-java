@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ford Fusion 2015</title>
+
+  <!-- CSS correto -->
+  <link rel="stylesheet" href="@{/css/decoracao.css}" th:href="@{/css/decoracao.css}">
+</head>
+<body>
+  
+  <div id="banner"> 
+    <!-- imagem do banner -->
+    <img th:src="@{/Fotos/banner.png}" alt="caminhão" id="caminhao">
+    <h1>Bem-vindo à Alma-X Truckão Motors</h1>
+  </div>
+
+  <div class="pai1">
+
+    <div id="fundo1">
+      <div id="produtos1">
+        <div id="itens1">
+          
+
+          <section class="galeria">
+        <div class="imagem-principal">
+          <img th:src="@{Fotos/Carros/Fusion/FUSION_FRENTE.png}" alt="Fusion" id="carro1">
+        </div>
+
+        <div class="miniaturas">
+            <img th:src="@{Fotos/Carros/Fusion/FUSION_INTERIOR.png}" alt="Fusion interior" class="pequeno">
+            <img th:src="@{Fotos/Carros/Fusion/FUSION_INTERIOR.png}" alt="Fusion interior" class="pequeno">
+        </div>
+      </section>
+
+  
+      <h1>Ford Fusion 2015</h1>
+      <p>Carro top de luxo, com todos os opcionais de fábrica, carro de mulher rodou pouco, totalmente revisado e motor zerado — 80.000 km!</p>
+
+      <div class="carrinho">
+            <form th:action="@{/adicionarCarrinho}" method="post">
+                <input type="hidden" name="nome" value="Ford Fusion 2015">
+                <input type="hidden" name="imagem" value="/Fotos/Carros/Fusion/FUSION_FRENTE.png">
+                <input type="hidden" name="preco" value="125000">
+                <input type="hidden" name="id" value="2">
+                <button type="submit" class="botao">Colocar no Carrinho</button>
+            </form>
+        </div>
+
+
+
+    </div>
+  </div>
+
+</body>
+</html>

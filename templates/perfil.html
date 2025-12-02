@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Meu Perfil</title>
+    <link rel="stylesheet" th:href="@{/css/perfil.css}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<header class="banner">
+    <div class="banner-inner">
+        <img th:src="@{/Fotos/banner.png}" alt="Caminhão" class="banner-img">
+        <h1 class="banner-heading">👤 Meu Perfil</h1>
+    </div>
+</header>
+
+<main class="page">
+    <p th:if="${param.contaApagada}" class="msg-erro">
+        Sua conta foi apagada com sucesso!
+    </p>
+
+    <section class="perfil">
+        <!-- FOTO DO PERFIL -->
+        <div class="imagem_perfil">
+            <img th:src="${usuario.fotoPerfil != null ? usuario.fotoPerfil : '/Fotos/icone/perfil.png'}"
+            class="imgperfil" id="fotoPerfil" alt="Foto do perfil">
+
+            <label for="inputFoto" class="edit-label" title="Alterar foto">
+                <img th:src="@{/Fotos/icone/lapis.png}" class="editar" alt="editar">
+            </label>
+
+            <form id="formFoto" th:action="@{/atualizarFoto}" method="post" enctype="multipart/form-data">
+            <input type="file" id="inputFoto" name="foto" accept="image/*" style="display:none;"
+           onchange="document.getElementById('formFoto').submit()">
+            </form>
+        </div>
+
+        <!-- DADOS DO USUÁRIO -->
+        <div class="dados">
+            <p th:if="${erro}" class="msg-erro">⚠️ [[${erro}]]</p>
+
+            <div class="campo">
+                <span class="campo-label">Nome:</span>
+                <span class="campo-valor" th:text="${usuario.nome}"></span>
+                <img src="/Fotos/icone/lapis.png" class="editarCampo" onclick="editar('nome')" alt="editar campo">
+            </div>
+            <form id="form-nome" class="editor escondido" method="post" th:action="@{/atualizarPerfil}">
+                <input type="hidden" name="campo" value="nome">
+                <input type="text" name="valor" placeholder="Novo nome">
+                <button type="submit" class="small-btn">Salvar</button>
+            </form>
+
+            <div class="campo">
+                <span class="campo-label">Email:</span>
+                <span class="campo-valor" th:text="${usuario.email}"></span>
+                <img src="/Fotos/icone/lapis.png" class="editarCampo" onclick="editar('email')" alt="editar campo">
+            </div>
+            <form id="form-email" class="editor escondido" method="post" th:action="@{/atualizarPerfil}">
+                <input type="hidden" name="campo" value="email">
+                <input type="email" name="valor" placeholder="Novo email">
+                <button type="submit" class="small-btn">Salvar</button>
+            </form>
+
+            <div class="campo">
+                <span class="campo-label">Telefone:</span>
+                <span class="campo-valor" th:text="${usuario.telefone}"></span>
+                <img src="/Fotos/icone/lapis.png" class="editarCampo" onclick="editar('telefone')" alt="editar campo">
+            </div>
+            <form id="form-telefone" class="editor escondido" method="post" th:action="@{/atualizarPerfil}">
+                <input type="hidden" name="campo" value="telefone">
+                <input type="text" name="valor" placeholder="Novo telefone">
+                <button type="submit" class="small-btn">Salvar</button>
+            </form>
+
+            <div class="campo">
+                <span class="campo-label">Senha:</span>
+                <span class="campo-valor">********</span>
+                <img src="/Fotos/icone/lapis.png" class="editarCampo" onclick="editar('senha')" alt="editar campo">
+            </div>
+            <form id="form-senha" class="editor escondido" method="post" th:action="@{/atualizarPerfil}">
+                <input type="hidden" name="campo" value="senha">
+                <input type="password" name="valor" placeholder="Nova senha">
+                <button type="submit" class="small-btn">Salvar</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- BOTÕES FINAIS -->
+    <div class="botoes-final">
+        <a th:href="@{/loja}" class="btn primary">Voltar à Loja</a>
+        <a th:href="@{/logout}" class="btn secondary">Sair</a>
+        <button class="btn danger" onclick="confirmarExclusao()">❌ Apagar Minha Conta</button>
+    </div>
+</main>
+
+<footer class="site-footer">
+    <p>© Alma-X Truckão Motors</p>
+</footer>
+
+<script>
+    function editar(campo) {
+        document.querySelectorAll(".editor").forEach(f => f.classList.add("escondido"));
+        const el = document.getElementById("form-" + campo);
+        if (el) el.classList.remove("escondido");
+        window.scrollTo({ top: el ? el.offsetTop - 60 : 0, behavior: 'smooth' });
+    }
+
+    function confirmarExclusao() {
+        if (confirm("⚠️ Tem certeza que deseja APAGAR sua conta? Isso não poderá ser desfeito!")) {
+            window.location.href = "/apagarConta";
+        }
+    }
+</script>
+
+</body>
+</html>

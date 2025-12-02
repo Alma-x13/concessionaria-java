@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <link rel="stylesheet" th:href="@{/css/decoracao.css}">
+    <title>DAF XF 460</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+    <a th:href="@{/loja}" class="btn-voltar">⟵ Voltar para a Loja</a>
+
+<div id="banner">
+    <h1>Bem Vindo ao Alma-X Truckão Motors</h1>
+</div>
+
+<div class="pai1">
+<div id="fundo1">
+
+    <div id="produtos1">
+        <div id="itens1">
+            <div>
+                <img th:src="@{/Fotos/Caminhoes/DAF XF 460 2020/DAF_XF.png}" alt="DAF" id="carro1" class="imagem-grande">
+            </div>
+        </div>
+
+        <div class="imagem">
+            <ol>
+                <li><img th:src="@{/Fotos/Caminhoes/DAF XF 460 2020/interior daf.png}" class="pequeno troca"></li>
+                <li><img th:src="@{/Fotos/Caminhoes/DAF XF 460 2020/lado daf.png}" class="pequeno troca"></li>
+                <li><img th:src="@{/Fotos/Caminhoes/DAF XF 460 2020/traseira.png}" class="pequeno troca"></li>
+            </ol>
+        </div>
+    </div>
+
+    <h1>DAF XF 460</h1>
+    <p>
+        Motor PACCAR 13L, único dono, cabine com geladeira, apenas 550 mil km.
+        Revisado com garantia e nota fiscal.
+    </p>
+
+    <div class="carrinho">
+        <form th:action="@{/adicionarCarrinho}" method="post">
+            <input type="hidden" name="nome" value="DAF XF 460">
+            <input type="hidden" name="imagem" value="Fotos/Caminhoes/DAF XF 460 2020/DAF_XF.png">
+            <input type="hidden" name="preco" value="300000">
+            <input type="hidden" name="id" value="7">
+            <button class="botao">Colocar no Carrinho</button>
+        </form>
+    </div>
+
+</div>
+</div>
+
+<script>
+document.querySelectorAll(".troca").forEach(img => {
+    img.addEventListener("click", () => {
+        const grande = document.querySelector(".imagem-grande");
+        const temp = grande.src;
+        grande.src = img.src;
+        img.src = temp;
+    });
+});
+</script>
+
+</body>
+</html>

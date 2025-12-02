@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>LEXUS ES 300h</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/decoracao.css}">
+</head>
+<body>
+
+<!-- Botão voltar -->
+<a th:href="@{/loja}" class="btn-voltar">⟵ Voltar para a Loja</a>
+
+<!-- Banner -->
+<div id="banner"> 
+    <h1>Alma-X Truckão Motors</h1>
+</div>
+
+<div class="container-veiculo">
+
+    <div class="card-veiculo">
+
+
+
+ <section class="galeria">
+        <div class="imagem-principal">
+            <img class="main-image"
+                 th:src="@{/Fotos/Carros/LEXUS/lexus-es-300h-2.5-16v-hibrido-cvt-wmimagem15174688716.png}"
+                 alt="Lexus ES 300h Frente">
+        </div>
+
+        <div class="miniaturas">
+            <img class="thumbnail" 
+                 th:src="@{/Fotos/Carros/LEXUS/lexus-es-300h-2.5-16v-hibrido-cvt-wmimagem15175518612.jpg}"
+                 alt="Interior Lexus">
+
+            <img class="thumbnail"
+                 th:src="@{/Fotos/Carros/LEXUS/lexus-es-300h-2.5-16v-hibrido-cvt-wmimagem15175626031.jpg}"
+                 alt="Traseira Lexus">
+        </div>
+      </section>
+
+        <!-- INFORMAÇÕES -->
+        <div class="info">
+            <h1>LEXUS ES 300h</h1>
+
+            <div class="detalhes">
+                <p><strong>Ano:</strong> 2020</p>
+                <p><strong>Motor:</strong> 2.5 Hybrid • 218 cv</p>
+                <p><strong>Quilometragem:</strong> 40.000 km</p>
+                <p><strong>Estado:</strong> Laudo aprovado • Revisões em dia</p>
+                <p><strong>Descrição:</strong> Veículo de extrema procedência, acabamento premium e conforto absoluto.</p>
+            </div>
+
+            <form th:action="@{/adicionarCarrinho}" method="post" class="form-carrinho">
+                <input type="hidden" name="nome" value="LEXUS ES 300h">
+                <input type="hidden" name="imagem" value="/Fotos/Carros/LEXUS/lexus-es-300h-2.5-16v-hibrido-cvt-wmimagem15174688716.png">
+                <input type="hidden" name="preco" value="125000">
+                <input type="hidden" name="id" value="3">
+
+                <button type="submit" class="botao-carrinho">Adicionar ao Carrinho 🛒</button>
+            </form>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- JavaScript externo -->
+<script th:src="@{/js/decoracao.js}"></script>
+
+</body>
+</html>
