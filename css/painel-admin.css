@@ -1,0 +1,114 @@
+body {
+    background: #1f1f1f;
+    color: #eee;
+    font-family: Arial, sans-serif;
+}
+
+.titulo {
+    text-align: center;
+    color: white;
+    font-size: 34px;
+    margin-top: 20px;
+}
+
+.btn-voltar {
+    background: #d40000;
+    padding: 10px 18px;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 20px;
+    display: inline-block;
+}
+
+.btn-voltar:hover {
+    background: #a00000;
+}
+
+/* Cards */
+
+.card {
+    background: #2a2a2a;
+    padding: 25px;
+    max-width: 900px;
+    margin: 30px auto;
+    border-radius: 12px;
+    box-shadow: 0 0 15px black;
+}
+
+.card h2 {
+    margin-bottom: 15px;
+}
+
+/* Tabelas */
+
+.tabela {
+    width: 100%;
+    border-collapse: collapse;
+    background: #333;
+    color: white;
+}
+
+.tabela th {
+    background: #444;
+    padding: 12px;
+}
+
+.tabela td {
+    padding: 12px;
+    border-top: 1px solid #555;
+}
+
+.acoes {
+    text-align: center;
+}
+
+/* Botões */
+
+.btn {
+    padding: 8px 15px;
+    border-radius: 6px;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+}
+
+.btn-azul {
+    background: #007bff;
+}
+
+.btn-azul:hover {
+    background: #0060cc;
+}
+
+.btn-verde {
+    background: #28a745;
+}
+
+.btn-vermelho {
+    background: #d40000;
+}
+
+.btn-vermelho:hover {
+    background: #a00000;
+}
+
+.btn-roxo {
+    background: #6f42c1;
+}
+
+.btn-roxo:hover {
+    background: #542f91;
+}
+
+.form input {
+    display: block;
+    width: 100%;
+    padding: 8px;
+    margin: 8px 0 15px;
+    background: #444;
+    border: none;
+    border-radius: 6px;
+    color: white;
+}

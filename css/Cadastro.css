@@ -1,0 +1,117 @@
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: #f6f8fb;
+  min-height:100vh;
+  margin:0;
+
+  background-image: url(../Fotos/cinza.jpg);
+  background-size: cover; 
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display:flex;
+  flex-direction: column; 
+  align-items: center;    
+  padding: 20px;
+
+}
+
+   
+#banner {
+
+  background: linear-gradient(to bottom, rgb(255, 255, 255), rgb(0, 0, 0));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 150%;
+  font-weight: bold;
+  color: aliceblue;
+  padding: 2%;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 10%; 
+
+}
+
+#caminhaoazul {
+  width: 300px;
+  height: 200px;
+  margin-right: 20px;
+
+}
+
+
+#pai {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+
+}
+
+
+.card {
+  background: white;
+  padding: 35px 40px;   
+  border-radius: 12px;
+  box-shadow: 0 6px 22px rgba(15,20,30,0.15);
+  width: 100%;
+  max-width: 150%;
+
+}
+
+
+.card fieldset {
+  margin-bottom: 18px;
+  border: none;
+  padding: 0;
+  
+}
+
+.card input,
+.card select,
+.card textarea {
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+
+.card button {
+  background: linear-gradient(to right, #41494a, #1a1c22);
+  color: white;
+  font-size: 18px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+
+}
+
+.card button:hover {
+  opacity: 0.9;
+
+}
+
+.row {
+  display: flex;
+  gap: 20px;
+  
+}
+
+.row fieldset {
+  flex: 1;
+  
+}
+
+#cadastrar{
+display: flex;
+justify-content: center;
+
+}
+
